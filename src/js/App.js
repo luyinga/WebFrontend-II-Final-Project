@@ -3,7 +3,7 @@ import { initRouter } from "./router";
 
 function Header() {
   const appTitle = createElement("h1", {
-    textContent: "PastryPal",
+    textContent: "Lulu Bakery",
     className: "heading",
   });
 
@@ -32,11 +32,11 @@ function Header() {
 
 function Footer() {
   const copyright = createElement("span", {
-    textContent: `© ${new Date().getFullYear()} PastryPal`,
+    textContent: `© ${new Date().getFullYear()} Lulu Bakery`,
   });
 
   const footerP = createElement("p", {
-    textContent: "All rights reserves",
+    textContent: "All rights reserved",
   });
   const lastModification = createElement("p", {
     textContent: `Last Modification: ${new Date().toLocaleString()}`,
@@ -44,10 +44,10 @@ function Footer() {
 
   const contactInfo = createElement("div", {}, [
     createElement("p", { textContent: "Contact Us" }),
-    createElement("p", { textContent: "Phone: +51 916 165 703" }),
-    createElement("p", { textContent: "Email: pastrypal@gmail.com" }),
+    createElement("p", { textContent: "Phone: +27 21 123 4567" }),
+    createElement("p", { textContent: "Email: lulubakery@gmail.com" }),
     createElement("p", {
-      textContent: "Address: 6711 Abanto St, Carlsbad, CA 92009",
+      textContent: "Address: 38 canterbury St, District six, Cape Town, South Africa",
     }),
   ]);
 

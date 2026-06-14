@@ -1,11 +1,11 @@
 import { createElement } from "./utils";
 import { getFeaturedRecipes } from "./APIHandler";
-import heroImg from "../images/hero_path.jpg";
+import heroImg from "../images/city7-9.webp";
 
 function HomeView() {
   const hero = createElement("img", {
     src: heroImg,
-    alt: "PastryPal Hero Image",
+    alt: "Hero Image",
     className: "hero",
   });
   const title = createElement("h2", {
@@ -14,12 +14,12 @@ function HomeView() {
   });
   const intro = createElement("p", {
     textContent:
-      "Welcome to PastryPal, your go-to source for delightful pastry recipes! Based in the heart of the baking community, PastryPal is dedicated to helping you discover the joy of homemade baked goods. From flaky croissants to rich, decadent cakes, our mission is to provide you with easy-to-follow recipes, sourced from renowned bakers for every skill level. Whether you're a seasoned baker or just starting out, our collection features a variety of delicious options and classic pastries.",
+      "Welcome to Lulu Bakery, It all began with Charly, a 16 year old boy looking for work in a small desert town called Swakopmund. He swept the floor, made puff pastry and washed dishes under the stern guidance of the German Master Baker, until he was allowed to learn the cakes: classics like Black Forest Cake and Sacher Torte.",
     className: "intro-paragraph",
   });
   const invite = createElement("p", {
     textContent:
-      "At PastryPal, we believe that baking should be accessible and rewarding—a way to bring loved ones together, one pastry at a time. Come explore, create, and share the love of baking with us!",
+      "At Lulu Bakery, we believe that baking should be accessible and rewarding—a way to bring loved ones together, one pastry at a time. Come explore, create, and share the love of baking with us!",
     className: "intro-paragraph",
   });
 

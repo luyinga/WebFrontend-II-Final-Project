@@ -1,50 +1,50 @@
-import { createElement } from './utils';
+import { createElement } from "./utils";
 
 function FavoriteRecipesView() {
-  const title = createElement('h2', { textContent: 'Your Favorite Recipes ' });
-  const favoritesSection = createElement('div', {
-    className: 'favorites-section',
+  const title = createElement("h2", { textContent: "Your Favorite Recipes " });
+  const favoritesSection = createElement("div", {
+    className: "favorites-section",
   });
 
-  let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
   favorites.forEach((recipe) => {
     const ingredientsList = Object.keys(recipe)
-      .filter((key) => key.startsWith('strIngredient') && recipe[key])
-      .map((key) => `${recipe[key]}: ${recipe['strMeasure' + key.slice(13)]}`)
-      .filter((ingredient) => ingredient.split(': ')[1] !== '');
+      .filter((key) => key.startsWith("strIngredient") && recipe[key])
+      .map((key) => `${recipe[key]}: ${recipe["strMeasure" + key.slice(13)]}`)
+      .filter((ingredient) => ingredient.split(": ")[1] !== "");
 
     const recipeCard = createElement(
-      'div',
-      { className: 'recipe-card favorite-card' },
+      "div",
+      { className: "recipe-card favorite-card" },
       [
-        createElement('h3', { textContent: recipe.strMeal }),
-        createElement('button', {
-          textContent: 'X',
-          className: 'remove-button',
+        createElement("h3", { textContent: recipe.strMeal }),
+        createElement("button", {
+          textContent: "X",
+          className: "remove-button",
           onclick: () => {
             removeFavorite(recipe.idMeal);
           },
         }),
-        createElement('img', {
+        createElement("img", {
           src: recipe.strMealThumb,
           alt: recipe.strMeal,
         }),
-        createElement('p', {
-          textContent: 'Ingredients:',
+        createElement("p", {
+          textContent: "Ingredients:",
         }),
         createElement(
-          'ul',
+          "ul",
           {},
           ingredientsList.map((ingredient) =>
-            createElement('li', { textContent: ingredient })
-          )
+            createElement("li", { textContent: ingredient }),
+          ),
         ),
-        createElement('p', {
+        createElement("p", {
           textContent: recipe.strInstructions,
-          className: 'recipe-instructions',
+          className: "recipe-instructions",
         }),
-      ]
+      ],
     );
 
     favoritesSection.appendChild(recipeCard);
@@ -52,46 +52,46 @@ function FavoriteRecipesView() {
 
   if (favorites.length === 0) {
     favoritesSection.appendChild(
-      createElement('p', {
-        textContent: 'You do not have favorites recipes 😞',
-      })
+      createElement("p", {
+        textContent: "You do not have favorites recipes 😞",
+      }),
     );
   }
 
   function removeFavorite(idMeal) {
     favorites = favorites.filter((recipe) => recipe.idMeal !== idMeal);
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    localStorage.setItem("favorites", JSON.stringify(favorites));
 
-    favoritesSection.innerHTML = '';
+    favoritesSection.innerHTML = "";
     favorites.forEach((recipe) => {
       const ingredientsList = Object.keys(recipe)
-        .filter((key) => key.startsWith('strIngredient') && recipe[key])
-        .map((key) => `${recipe[key]}: ${recipe['strMeasure' + key.slice(13)]}`)
-        .filter((ingredient) => ingredient.split(': ')[1] !== '');
+        .filter((key) => key.startsWith("strIngredient") && recipe[key])
+        .map((key) => `${recipe[key]}: ${recipe["strMeasure" + key.slice(13)]}`)
+        .filter((ingredient) => ingredient.split(": ")[1] !== "");
 
-      const recipeCard = createElement('div', { className: 'recipe-card' }, [
-        createElement('h3', { textContent: recipe.strMeal }),
-        createElement('img', {
+      const recipeCard = createElement("div", { className: "recipe-card" }, [
+        createElement("h3", { textContent: recipe.strMeal }),
+        createElement("img", {
           src: recipe.strMealThumb,
           alt: recipe.strMeal,
         }),
-        createElement('p', {
-          textContent: 'Ingredients:',
+        createElement("p", {
+          textContent: "Ingredients:",
         }),
         createElement(
-          'ul',
+          "ul",
           {},
           ingredientsList.map((ingredient) =>
-            createElement('li', { textContent: ingredient })
-          )
+            createElement("li", { textContent: ingredient }),
+          ),
         ),
-        createElement('p', {
+        createElement("p", {
           textContent: recipe.strInstructions,
-          className: 'recipe-instructions',
+          className: "recipe-instructions",
         }),
-        createElement('button', {
-          textContent: 'X',
-          className: 'remove-button',
+        createElement("button", {
+          textContent: "X",
+          className: "remove-button",
           onclick: () => {
             removeFavorite(recipe.idMeal);
           },
@@ -103,14 +103,14 @@ function FavoriteRecipesView() {
 
     if (favorites.length === 0) {
       favoritesSection.appendChild(
-        createElement('p', {
-          textContent: 'You do not have favorites recipes 😞',
-        })
+        createElement("p", {
+          textContent: "You do not have favorites recipes 😞",
+        }),
       );
     }
   }
 
-  return createElement('div', {}, [title, favoritesSection]);
+  return createElement("div", {}, [title, favoritesSection]);
 }
 
 export default FavoriteRecipesView;

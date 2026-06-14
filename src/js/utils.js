@@ -3,7 +3,7 @@ export function createElement(type, props = {}, children = []) {
 
   //props: {textContent: "Hello World", id: "header1", "data-productId": 123, ...}
   Object.entries(props).forEach(([key, value]) => {
-    if (~key.indexOf('-')) {
+    if (~key.indexOf("-")) {
       element.setAttribute(key, value);
     } else {
       element[key] = value;

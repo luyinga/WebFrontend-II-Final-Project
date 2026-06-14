@@ -1,6 +1,6 @@
 :root {
   --font-body: Arial, Helvetica, sans-serif;
-  --font-headline: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
   /* colors */
   --primary-color: #202c39;
   --secondary-color: #283845;
@@ -378,10 +378,10 @@ footer a {
     margin: auto;
     text-align: left;
     grid-template-areas:
-      'title ingredientH'
-      'image ingredients-list'
-      'button ingredients-list'
-      'instructions instructions';
+      "title ingredientH"
+      "image ingredients-list"
+      "button ingredients-list"
+      "instructions instructions";
   }
 
   .RV-title {

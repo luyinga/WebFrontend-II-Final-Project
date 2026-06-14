@@ -1,66 +1,66 @@
-import { createElement } from './utils';
-import { getFeaturedRecipes, getRecipeDetails } from './APIHandler';
+import { createElement } from "./utils";
+import { getFeaturedRecipes, getRecipeDetails } from "./APIHandler";
 
 function RecipesView() {
-  const title = createElement('h2', {
-    textContent: 'Explore All Our Recipes',
-    className: 'RV-title',
+  const title = createElement("h2", {
+    textContent: "Explore All Our Recipes",
+    className: "RV-title",
   });
-  const recipesSection = createElement('div', {
-    className: 'RV-recipes-section',
+  const recipesSection = createElement("div", {
+    className: "RV-recipes-section",
   });
 
   getFeaturedRecipes().then((recipes) => {
     const recipesPromises = recipes.map((recipe) =>
-      getRecipeDetails(recipe.idMeal)
+      getRecipeDetails(recipe.idMeal),
     );
 
     Promise.all(recipesPromises).then((detailedRecipes) => {
       detailedRecipes.forEach((recipe) => {
         const ingredientsList = Object.keys(recipe)
-          .filter((key) => key.startsWith('strIngredient') && recipe[key])
+          .filter((key) => key.startsWith("strIngredient") && recipe[key])
           .map(
-            (key) => `${recipe[key]}: ${recipe['strMeasure' + key.slice(13)]}`
+            (key) => `${recipe[key]}: ${recipe["strMeasure" + key.slice(13)]}`,
           )
-          .filter((ingredient) => ingredient.split(': ')[1] !== '');
+          .filter((ingredient) => ingredient.split(": ")[1] !== "");
 
         const recipeCard = createElement(
-          'div',
-          { className: 'RV-recipe-card' },
+          "div",
+          { className: "RV-recipe-card" },
           [
-            createElement('h3', {
+            createElement("h3", {
               textContent: recipe.strMeal,
-              className: 'RV-recipe-title',
+              className: "RV-recipe-title",
             }),
-            createElement('img', {
+            createElement("img", {
               src: recipe.strMealThumb,
               alt: recipe.strMeal,
-              className: 'RV-recipe-image',
+              className: "RV-recipe-image",
             }),
-            createElement('button', {
-              className: 'favorite-btn',
-              innerHTML: '&#10084;', // Heart icon
+            createElement("button", {
+              className: "favorite-btn",
+              innerHTML: "&#10084;", // Heart icon
               onclick: (event) => toggleFavorite(recipe, event.target),
             }),
-            createElement('p', {
-              textContent: 'Ingredients: ',
-              className: 'RV-ingredientH',
+            createElement("p", {
+              textContent: "Ingredients: ",
+              className: "RV-ingredientH",
             }),
             createElement(
-              'ul',
+              "ul",
               {},
               ingredientsList.map((ingredient) =>
-                createElement('li', {
+                createElement("li", {
                   textContent: ingredient,
-                  className: 'RV-ingredient-item',
-                })
-              )
+                  className: "RV-ingredient-item",
+                }),
+              ),
             ),
-            createElement('p', {
+            createElement("p", {
               textContent: recipe.strInstructions,
-              className: 'RV-recipe-instructions',
+              className: "RV-recipe-instructions",
             }),
-          ]
+          ],
         );
 
         recipesSection.appendChild(recipeCard);
@@ -68,11 +68,11 @@ function RecipesView() {
     });
   });
 
-  return createElement('div', {}, [title, recipesSection]);
+  return createElement("div", {}, [title, recipesSection]);
 }
 
 function toggleFavorite(recipe, button) {
-  let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   const isFavorite = favorites.some((fav) => fav.idMeal === recipe.idMeal);
 
   if (isFavorite) {
@@ -81,9 +81,9 @@ function toggleFavorite(recipe, button) {
     favorites.push(recipe);
   }
 
-  localStorage.setItem('favorites', JSON.stringify(favorites));
-  button.classList.add('shake');
-  setTimeout(() => button.classList.remove('shake'), 500);
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  button.classList.add("shake");
+  setTimeout(() => button.classList.remove("shake"), 500);
 }
 
 export default RecipesView;

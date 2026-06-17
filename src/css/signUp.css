@@ -1,0 +1,25 @@
+.newsletter {
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  background: #f4f4f4;
+  border-radius: 8px;
+}
+
+.newsletter input {
+  padding: 0.75rem;
+  width: 70%;
+  max-width: 300px;
+  margin-right: 0.5rem;
+}
+
+.newsletter button {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+
+#newsletter-message {
+  margin-top: 1rem;
+  font-weight: bold;
+}

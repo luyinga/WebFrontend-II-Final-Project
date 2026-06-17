@@ -47,7 +47,8 @@ function Footer() {
     createElement("p", { textContent: "Phone: +27 21 123 4567" }),
     createElement("p", { textContent: "Email: lulubakery@gmail.com" }),
     createElement("p", {
-      textContent: "Address: 38 canterbury St, District six, Cape Town, South Africa",
+      textContent:
+        "Address: 38 canterbury St, District six, Cape Town, South Africa",
     }),
   ]);
 
